@@ -72,7 +72,7 @@ def display_letters(word, guesses):
         guesses (str): A string of correct guesses
     """
     letters = list(word)
-    guesses = list(guesses)
+    guesses = list(set(guesses))
     word_list = list(word)
 
     for k in range(0, len(word)): 
