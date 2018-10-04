@@ -64,14 +64,30 @@ def display_platform(wrong_guesses):
     pass
 
 
-def display_letters(word, guesses):
+def get_blanked_word(word, guesses):
     """Displays (prints) the letter-board,
     underscores (_) for letters not yet guessed.
     Args:
         word (str): The secret word
         guesses (str): A string of correct guesses
     """
-    pass
+    letters = list(word)
+    guesses = list(set(guesses))
+    word_list = list(word)
+
+    for k in range(len(word)):
+        if(letters[k] != " "):
+            letters[k] = "_"
+
+    for guess_letter in guesses:
+      num_of_guess_letters = word.count(guess_letter)
+      for j in range(num_of_guess_letters):
+          if(guess_letter in word):
+              ind = word_list.index(guess_letter)
+              letters[ind] = guess_letter
+              word_list[ind] = "_"
+
+    return " ".join(letters)
 
 
 def get_guess():
